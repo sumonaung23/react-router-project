@@ -45,6 +45,22 @@ header a:hover {
     text-decoration: underline;
 }
 
+main {
+    margin-bottom: 84px;
+}
+
+footer {
+    background-color: #161616;
+    color: #AAAAAA;
+    height: 74px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    font-weight: 500;
+}
+
 .link-button {
     display: inline-block;
     text-align: center;
