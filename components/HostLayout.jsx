@@ -22,6 +22,11 @@ const HostLayout = () => {
                     Income
                 </NavLink>
                 <NavLink 
+                    to="/host/vans"
+                    style={({isActive}) => isActive ? activeNav : null}>
+                    Vans
+                </NavLink>
+                <NavLink 
                     to="/host/reviews"
                     style={({isActive}) => isActive ? activeNav : null}>
                         Reviews
