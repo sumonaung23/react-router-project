@@ -426,3 +426,24 @@ i[class*='van-type-'] {
     text-decoration: underline;
     font-weight: 700;
 }
+
+.notFound {
+    padding: 3rem;
+    margin: 3rem;
+}
+
+.notFound h1 {
+    margin-bottom: 3rem;
+}
+
+.notFound .link {
+    width: 95%;
+    padding: 1rem 9rem;
+    background-color: #161616;
+    color: #FFF7ED;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;;
+}
