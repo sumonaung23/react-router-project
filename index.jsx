@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { Routerprovider,
+          createBrowserRouter, 
+          createRoutesFromElements, 
+          Route, Link, RouterProvider } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from "./pages/Van/Vans"
@@ -19,11 +22,8 @@ import NotFound from './pages/NotFound';
 
 import "./server"
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
@@ -43,8 +43,11 @@ function App() {
 
           <Route path='*' element={<NotFound />} />
         </Route >
-      </Routes>
-    </BrowserRouter>
+))
+
+function App() {
+  return (
+    <RouterProvider router={router} />
   )
 }
 
