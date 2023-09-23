@@ -18,6 +18,12 @@ const Header = () => {
                     to="/vans"
                     className={({isActive}) => isActive ? 'nav-link' : null}
                     >Vans</NavLink>
+                <Link to="login" className="login-link">
+                    <img 
+                        src="/assets/images/avatar-icon.png" 
+                        className="login-icon"
+                    />
+                </Link>
             </nav>
         </header>
     )
