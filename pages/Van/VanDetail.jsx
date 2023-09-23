@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLoaderData, useLocation, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { getVans } from '../../api'
+
+export function loader({ params }) {
+    return getVans()
+}
 
 const VanDetail = () => {
     const params = useParams();
     const location = useLocation();
     const [van, setVan] = useState(null);
+    const data = useLoaderData();
 
     React.useEffect(() => {
         fetch(`/api/vans/${params.id}`)
