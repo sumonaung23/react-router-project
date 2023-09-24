@@ -19,6 +19,7 @@ import HostVanPricing from './pages/Host/HostVanPricing';
 import HostLayout from './components/HostLayout';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import { requireAuth } from './pages/util';
 
 import "./server"
 
@@ -37,23 +38,17 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route 
               index 
               element={<Dashboard />} 
-              loader={async () => {
-                return null
-              }}
+              loader={async () => {return await requireAuth()}}
             />
             <Route 
               path='income' 
               element={<Income />}
-              loader={async () => {
-                return null
-              }} 
+              loader={async () => {return await requireAuth()}} 
             />
             <Route 
               path='reviews' 
               element={<Reviews />} 
-              loader={async () => {
-                return null
-              }}
+              loader={async () => {return await requireAuth()}}
             />
             <Route 
               path='vans' 
