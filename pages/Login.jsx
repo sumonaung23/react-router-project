@@ -8,12 +8,16 @@ export function loader({ request }) {
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" });
+    const [status, setStatus] = React.useState("idle")
     const message = useLoaderData();
 
     function handleSubmit(e) {
         e.preventDefault()
+        setStatus("submitting")
         loginUser(loginFormData)
             .then(data => console.log(data))
+            .catch()
+            .finally(() => setStatus("idle"))
     }
 
     function handleChange(e) {
@@ -43,7 +47,9 @@ export default function Login() {
                     placeholder="Password"
                     value={loginFormData.password}
                 />
-                <button>Log in</button>
+                <button disabled={status === "submitting"}>
+                    {status === "submitting" ? "Logging in..." : "Log in"}
+                </button>
             </form>
         </div>
     )
