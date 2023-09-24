@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink , useParams, Outlet, useLoaderData } from 'react-router-dom';
 import { getHostVans } from '../../api';
-import { requireAuth } from '../util';
+import { requireAuth } from '../../util';
+
 
 export async function loader({ params }) {
-    await requireAuth();
+    await requireAuth;
     return getHostVans(params.id)
 }
 
