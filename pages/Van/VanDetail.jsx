@@ -4,20 +4,12 @@ import { Link } from 'react-router-dom'
 import { getVans } from '../../api'
 
 export function loader({ params }) {
-    return getVans()
+    return getVans(params.id)
 }
 
 const VanDetail = () => {
-    const params = useParams();
     const location = useLocation();
-    const [van, setVan] = useState(null);
-    const data = useLoaderData();
-
-    React.useEffect(() => {
-        fetch(`/api/vans/${params.id}`)
-            .then(res => res.json())
-            .then(data => setVan(data.vans))
-    }, [params.id])
+    const van = useLoaderData();
 
     const search = location.state?.search || ""
     const type = location.state?.type || "all"
