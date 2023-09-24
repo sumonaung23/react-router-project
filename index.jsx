@@ -18,8 +18,8 @@ import HostVanInfo from './pages/Host/HostVanInfo';
 import HostVanPricing from './pages/Host/HostVanPricing';
 import HostLayout from './components/HostLayout';
 import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import { requireAuth } from './pages/util';
+import Login, { loader as loginLoader } from './pages/Login';
+import { requireAuth } from './util';
 
 import "./server"
 
@@ -30,6 +30,7 @@ const router = createBrowserRouter(createRoutesFromElements(
           <Route
             path="login"
             element={<Login />}
+            loader={loginLoader}
           />
           <Route path="vans" element={<Vans />} errorElement={<Error />} loader={vansLoader} />
           <Route path='vans/:id' element={<VanDetail />} loader={vanDetailLoader}/>
