@@ -4,6 +4,7 @@ import { createServer, Model } from "miragejs"
 createServer({
     models: {
         vans: Model, 
+        users: Model
     },
 
     seeds(server) {
