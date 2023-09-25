@@ -9,14 +9,16 @@ export function loader({ request }) {
 export default function Login() {
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" });
     const [status, setStatus] = React.useState("idle")
+    const [error, setError] = React.useState(null)
     const message = useLoaderData();
 
     function handleSubmit(e) {
         e.preventDefault()
         setStatus("submitting")
+        setError(null)
         loginUser(loginFormData)
             .then(data => console.log(data))
-            .catch()
+            .catch(err => setError(err))
             .finally(() => setStatus("idle"))
     }
 
@@ -32,6 +34,7 @@ export default function Login() {
         <div className="login-container">
             <h1>Sign in to your account</h1>
             { message && <h3 className="red">{message}</h3>}
+            { error && <h3 className="red">{error.message}</h3>}
             <form onSubmit={handleSubmit} className="login-form">
                 <input
                     name="email"
