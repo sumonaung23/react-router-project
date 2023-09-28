@@ -6,8 +6,11 @@ export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
 }
 
-export async function action() {
-    console.log("Action function")
+export async function action({ request }) {
+    const formData = await request.formData()
+    const email = formData.get("email")
+    const password = formData.get("password")
+    console.log(email, password)
     return null
 }
 
