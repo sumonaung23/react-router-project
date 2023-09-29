@@ -10,7 +10,9 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
+    const data = await loginUser({ email, password })
     console.log(email, password)
+    
     return null
 }
 
@@ -47,17 +49,13 @@ export default function Login() {
             <Form method="post" onSubmit={handleSubmit} className="login-form">
                 <input
                     name="email"
-                    onChange={handleChange}
                     type="email"
                     placeholder="Email address"
-                    value={loginFormData.email}
                 />
                 <input
                     name="password"
-                    onChange={handleChange}
                     type="password"
                     placeholder="Password"
-                    value={loginFormData.password}
                 />
                 <button disabled={status === "submitting"}>
                     {status === "submitting" ? "Logging in..." : "Log in"}
