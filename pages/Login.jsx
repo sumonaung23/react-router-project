@@ -11,9 +11,8 @@ export async function action({ request }) {
     const email = formData.get("email")
     const password = formData.get("password")
     const data = await loginUser({ email, password })
-    console.log(email, password)
-    
-    return null
+    localStorage.setItem("loggedin", true)
+    return redirect("/host")
 }
 
 export default function Login() {
